@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Jagan N's Portfolio – Web Developer | Programmer | BCA Graduate | Projects, Skills, and Contact Info.">
+  <title>Jagan N | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.1/lottie.min.js"></script>
+  <style>
+    :root {
+      --accent: #00ffe7;
+      --accent2: #3f51b5;
+      --bg-primary: #1e2236;
+      --bg-secondary: #24264a;
+      --text-main: #e6e9f0;
+      --text-light: #a7b0c5;
+      --glass-bg: rgba(30,34,54,0.82);
+      --glass-border: rgba(255,255,255,0.08);
+      --glass-blur: blur(12px);
+      --badge-bg: linear-gradient(90deg, var(--accent), #00bfff 70%);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    header {
+      background: var(--bg-secondary);
+      backdrop-filter: blur(14px);
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.8rem;
+      background: linear-gradient(90deg, var(--accent) 40%, #fff 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    nav[aria-label] a {
+      margin: 0 12px;
+      font-weight: 700;
+      color: var(--text-main);
+      text-decoration: none;
+    }
+    nav a.active,
+    nav a:hover {
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent);
+    }
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 80px 20px;
+      background: var(--bg-secondary);
+      overflow: hidden;
+    }
+    #lottie-anim {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 400px;
+      height: 400px;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      opacity: 0.15;
+    }
+    .hero-text {
+      font-family: 'Montserrat';
+      font-size: 2.8rem;
+      margin-bottom: 12px;
+      background: linear-gradient(90deg, var(--accent) 40%, #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      min-height: 3.2em;
+    }
+    .hero-subtext {
+      font-size: 1.3rem;
+      color: var(--text-light);
+    }
+    section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px;
+      background: var(--glass-bg);
+      border: 1.5px solid var(--glass-border);
+      backdrop-filter: var(--glass-blur);
+      border-radius: 12px;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    h2 {
+      font-family: 'Montserrat';
+      font-size: 2rem;
+      border-left: 5px solid var(--accent2);
+      padding-left: 12px;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+    img {
+      width: 100%;
+      max-height: 280px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin: 12px 0;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--badge-bg);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.95rem;
+      color: #22243d;
+      margin-right: 6px;
+      margin-top: 4px;
+    }
+    .project {
+      margin-bottom: 32px;
+      padding: 20px;
+      background: var(--bg-secondary);
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .project:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
+    }
+    .project-links a {
+      margin-right: 16px;
+      text-decoration: none;
+      color: var(--accent);
+    }
+    .project-links a:hover {
+      text-decoration: underline;
+    }
+    ul {
+      list-style-type: disc;
+      padding-left: 20px;
+      color: var(--text-light);
+    }
+    footer {
+      background: var(--bg-secondary);
+      text-align: center;
+      padding: 20px;
+      font-size: 0.95rem;
+      color: var(--text-light);
+    }
+    @media (max-width: 600px) {
+      .hero-text { font-size: 1.8rem; }
+      img { max-height: 160px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Jagan N</h1>
+    <nav aria-label="Main navigation" id="navbar">
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#languages">Languages</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div id="lottie-anim"></div>
+      <h1 class="hero-text"></h1>
+      <p class="hero-subtext">Web Developer • Programmer • Lifelong Learner</p>
+    </section>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I’m a motivated BCA graduate from Bangalore (2025), passionate about building impactful web apps. Skilled in HTML, CSS, JavaScript, Python, MySQL, Git, and responsive UI design. I'm a quick learner, adaptable, and a strong collaborator.</p>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <p><strong>Bachelor of Computer Applications (BCA)</strong>, Koshys Group of Management Studies, Bangalore<br>
+      Graduation: 2025 &nbsp; <span class="badge">CGPA: 7.4</span></p>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li><strong>Languages:</strong> HTML, CSS, JavaScript, Python</li>
+        <li><strong>Tools:</strong> MySQL, Git/GitHub</li>
+        <li><strong>Web Dev:</strong> Responsive UI/UX design</li>
+        <li><strong>Soft:</strong> Problem solving, communication, teamwork</li>
+      </ul>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+
+      <div class="project">
+        <h3>Stock Market Prediction <span class="badge">Python</span><span class="badge">Machine Learning</span></h3>
+        <img src="https://source.unsplash.com/800x400/?stock,chart" alt="Stock Market Project" loading="lazy">
+        <ul>
+          <li>Data cleaning & visualization using Pandas & Matplotlib.</li>
+          <li>Models: Linear Regression & Random Forest.</li>
+          <li>Evaluation: MAE & RMSE.</li>
+        </ul>
+        <div class="project-links">
+          <a href="#" target="_blank">GitHub</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <h3>Travel Website <span class="badge">HTML</span><span class="badge">CSS</span><span class="badge">JavaScript</span></h3>
+        <img src="https://source.unsplash.com/800x400/?travel,website" alt="Travel Website Project" loading="lazy">
+        <ul>
+          <li>Responsive travel site with destinations & booking form.</li>
+          <li>Dynamic features: sliders & modals.</li>
+        </ul>
+        <div class="project-links">
+          <a href="#" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <h2>Certifications</h2>
+      <ul>
+        <li>Introduction to Python – IBM</li>
+        <li>Customer Engagement Fundamentals – IBM</li>
+      </ul>
+    </section>
+
+    <section id="languages">
+      <h2>Languages Known</h2>
+      <ul>
+        <li>English</li>
+        <li>Tamil</li>
+        <li>Kannada</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:you@example.com" style="color:var(--accent)">you@example.com</a></p>
+      <p>GitHub: <a href="https://github.com/yourgithub" target="_blank" style="color:var(--accent)">yourgithub</a></p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank" style="color:var(--accent)">yourprofile</a></p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Jagan N. All rights reserved.
+  </footer>
+
+  <script>
+    // Typing effect
+    const heroText = document.querySelector(".hero-text");
+    const roles = ["Jagan N", "Web Developer", "BCA Graduate", "Programmer"];
+    let roleIndex = 0, charIndex = 0, isDeleting = false;
+
+    function type() {
+      const current = roles[roleIndex];
+      if (isDeleting) {
+        charIndex--;
+        if (charIndex === 0) {
+          isDeleting = false;
+          roleIndex = (roleIndex + 1) % roles.length;
+        }
+      } else {
+        charIndex++;
+        if (charIndex === current.length) isDeleting = true;
+      }
+
+      heroText.textContent = current.substring(0, charIndex);
+      setTimeout(type, isDeleting ? 50 : 120);
+    }
+
+    type();
+
+    // Lottie animation
+    const animContainer = document.getElementById('lottie-anim');
+    lottie.loadAnimation({
+      container: animContainer,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: 'https://assets2.lottiefiles.com/packages/lf20_puciaact.json'
+    });
+
+    // Scroll animation
+    gsap.utils.toArray("section").forEach((section, i) => {
+      gsap.to(section, {
+        opacity: 1,
+        y: 0,
+        duration: 1.1,
+        delay: i * 0.15,
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%",
+        },
+      });
+    });
+  </script>
+</body>
+</html>
